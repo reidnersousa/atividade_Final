@@ -92,15 +92,71 @@ class TelaEmprego2 extends StatelessWidget {
   }
 }
 
-class TelaEmprego3 extends StatelessWidget {
+class TelaEmprego3 extends StatefulWidget {
+  @override
+  _TelaEmprego3State createState() => _TelaEmprego3State();
+}
+
+class _TelaEmprego3State extends State<TelaEmprego3> {
+  bool inscrito =
+      false; // Variável para controlar se a pessoa está inscrita ou não
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Emprego 3'),
       ),
-      body: Center(
-        child: Text('Detalhes do Emprego 3'),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Área de Atuação: Transporte',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            Text('Profissão: Piloto'),
+            Text('Local do Emprego: Brasília'),
+            Text('Horário do Emprego: A combinar'),
+            Text('Salário: R\$ 4.000,00'),
+            Text(
+              'Requisitos para o Emprego: Experiência com Pilotagem de Aviões Boeing',
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Sobre o Emprego:',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'Monitora constantemente os instrumentos da aeronave, como altímetro, velocímetro, bússola e sistemas de navegação, para manter a aeronave na rota correta, na altitude adequada e com a velocidade adequada.',
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // Lógica para aplicar-se ao emprego
+                setState(() {
+                  inscrito = true; // Atualiza o estado para inscrito = true
+                });
+              },
+              child: Text('Inscreva-se'),
+            ),
+            SizedBox(height: 16),
+            if (inscrito)
+              Container(
+                padding: EdgeInsets.all(16),
+                color: Colors.green,
+                child: Text(
+                  'Você foi inscrito neste emprego!',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
