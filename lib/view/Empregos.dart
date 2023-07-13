@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
+class TelaEmprego1 extends StatefulWidget {
+  @override
+  _TelaEmprego1State createState() => _TelaEmprego1State();
+}
 
-class TelaEmprego1 extends StatelessWidget {
+class _TelaEmprego1State extends State<TelaEmprego1> {
+  bool inscrito1 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,10 +41,25 @@ class TelaEmprego1 extends StatelessWidget {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Lógica para aplicar-se ao emprego
+                setState(() {
+                  inscrito1 = true; // Atualiza o estado para inscrito = true
+                });
               },
               child: Text('Aplicar-se'),
             ),
+            if (inscrito1)
+              Container(
+                padding: EdgeInsets.all(16),
+                color: Colors.green,
+                child: Text(
+                  'Você foi inscrito neste emprego!',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
           ],
         ),
       ),
@@ -47,8 +67,14 @@ class TelaEmprego1 extends StatelessWidget {
   }
 }
 
-class TelaEmprego2 extends StatelessWidget {
+class TelaEmprego2 extends StatefulWidget {
   @override
+  _TelaEmprego2State createState() => _TelaEmprego2State();
+}
+
+class _TelaEmprego2State extends State<TelaEmprego2> {
+  bool inscrito2 = false;
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -82,9 +108,26 @@ class TelaEmprego2 extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Lógica para aplicar-se ao emprego
+                setState(() {
+                  inscrito2 = true; // Atualiza o estado para inscrito = true
+                });
               },
-              child: Text('Aplicar-se'),
+              child: Text('Inscreva-se'),
             ),
+            SizedBox(height: 16),
+            if (inscrito2)
+              Container(
+                padding: EdgeInsets.all(16),
+                color: Colors.green,
+                child: Text(
+                  'Você foi inscrito neste emprego!',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
           ],
         ),
       ),

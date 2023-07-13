@@ -1,28 +1,50 @@
 import 'package:flutter/material.dart';
 
 import 'Empregos.dart';
+import 'Buscar.dart';
 
-class TelaBuscarEmprego extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class TelaBuscarEmprego extends StatefulWidget {
+  @override
+  _TelaBuscarEmpregoState createState() => _TelaBuscarEmpregoState();
+}
+
+class _TelaBuscarEmpregoState extends State<TelaBuscarEmprego> {
+  TextEditingController _controller = TextEditingController();
+  String _termoPesquisa = '';
+
+  void _realizarBusca() {
+    setState(() {
+      _termoPesquisa = _controller.text;
+    });
+
+    // Implemente a lógica da busca com base no _termoPesquisa
+    // Atualize a exibição dos resultados da busca de acordo com a sua implementação.
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Buscar Empregos'),
+        title: Text('Buscar Emprego'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Icon(Icons.search),
-                SizedBox(width: 8),
-                Text(
-                  'Buscar',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            SizedBox(height: 16),
+
+            TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                hintText: 'Digite o emprego ...',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: _realizarBusca,
                 ),
-              ],
+              ),
             ),
             SizedBox(height: 16),
             GestureDetector(
@@ -111,6 +133,8 @@ class TelaBuscarEmprego extends StatelessWidget {
                 ),
               ),
             ),
+
+            // Exibir os resultados da busca de acordo com a sua implementação
           ],
         ),
       ),
